@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weer App</title>
+    <script>
+        async function getWeather() {
+            const city = document.getElementById('city').value;
+            const apiKey = 'JOUW_API_KEY';  // Je OpenWeather API-key
+            const response = await fetch(`https://jouw-apim.azure-api.net/weer/weather?q=${city}&appid=${apiKey}`);
+            const data = await response.json();
+            if (data.weather) {
+                document.getElementById('result').innerText = `Het weer in ${city}: ${data.weather[0].description}, Temp: ${data.main.temp}°C`;
+            } else {
+                document.getElementById('result').innerText = 'Stad niet gevonden of er is een fout opgetreden.';
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Weer App</h1>
+    <input type="text" id="city" placeholder="Voer stad in" />
+    <button onclick="getWeather()">Bekijk Weer</button>
+    <p id="result"></p>
+</body>
+</html>
