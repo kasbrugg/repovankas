@@ -8,7 +8,7 @@
         async function getWeather() {
             const city = document.getElementById('city').value;
             const apiKey = 'd3c144219ff17f2cac7c967eaa975617';  // Je OpenWeather API-key
-            const response = await fetch(`https://jouw-apim.azure-api.net/weer/weather?q=${city}&appid=${apiKey}`);
+            const response = await fetch(`https://api-weerapp.azure-api.net/weather?q=${city}&appid=${apiKey}`);
             const data = await response.json();
             if (data.weather) {
                 document.getElementById('result').innerText = `Het weer in ${city}: ${data.weather[0].description}, Temp: ${data.main.temp}°C`;
